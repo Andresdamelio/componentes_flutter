@@ -1,9 +1,9 @@
 
 
-import 'package:flutter/material.dart';
 
-import 'package:componentes_flutter/src/pages/home_page.dart';
-//import 'package:componentes_flutter/src/pages/home_temp.dart';
+import 'package:flutter/material.dart';
+import 'package:componentes_flutter/src/pages/alert_page.dart';
+import 'package:componentes_flutter/src/routes/routes.dart';
 
 
 void main() => runApp(MyApp());
@@ -14,7 +14,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Lista',
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      // home: HomePage(),
+      initialRoute: 'home',
+      routes: getApplicationRoutes(),
+      onGenerateRoute: ( settings ) {
+        return MaterialPageRoute(
+          builder: (BuildContext context) => AlertPage()
+        );
+      } ,
     );
   }
 }
