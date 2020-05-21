@@ -11,15 +11,44 @@ class CardPage extends StatelessWidget {
       body: ListView(
         padding: EdgeInsets.all(10.0),
         children: <Widget>[
-          _cardTypeOne()
+          _typeOneCard(),
+          SizedBox( height: 30.0, ),
+          _typeTwoCard(),
+          SizedBox( height: 30.0, ),
+          _typeOneCard(),
+          SizedBox( height: 30.0, ),
+          _typeTwoCard(),
+          SizedBox( height: 30.0, ),
+          _typeOneCard(),
+          SizedBox( height: 30.0, ),
+          _typeTwoCard(),
+          SizedBox( height: 30.0, ),
+          _typeOneCard(),
+          SizedBox( height: 30.0, ),
+          _typeTwoCard(),
+          SizedBox( height: 30.0, ),
+          _typeOneCard(),
+          SizedBox( height: 30.0, ),
+          _typeTwoCard(),
+          SizedBox( height: 30.0, ),
+          _typeOneCard(),
+          SizedBox( height: 30.0, ),
+          _typeTwoCard(),
+          SizedBox( height: 30.0, ),
+          _typeOneCard(),
+          SizedBox( height: 30.0, ),
+          _typeTwoCard(),
+          SizedBox( height: 30.0, ),
         ],
       ),
     );
   }
 
-  Widget _cardTypeOne() {
+  Widget _typeOneCard() {
     return Card(
       color: Colors.white,
+      elevation: 10.0,
+      shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(20.0)),
       child: Column(
         children: <Widget>[
           ListTile(
@@ -41,6 +70,49 @@ class CardPage extends StatelessWidget {
             ],
           )
         ]
+      ),
+    );
+  }
+
+  Widget _typeTwoCard() {
+    final card = Container(
+      //clipBehavior: Clip.antiAlias,
+      child: Column(
+        children: <Widget>[
+          FadeInImage(
+            image: NetworkImage('https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80'),
+            placeholder: AssetImage('assets/original.gif'),
+            fadeInDuration: Duration( milliseconds: 200 ),
+            height: 300,
+            fit: BoxFit.cover,
+          ),
+          // Image(
+          //   image: NetworkImage('https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80'),
+          // ),
+          Container(
+            padding: EdgeInsets.all(10.0),
+            child: Text('Paisaje')
+          )
+        ]
+      ),
+    );
+
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30.0),
+        color: Colors.white,
+        boxShadow: <BoxShadow>[
+        BoxShadow(
+          color: Colors.black26,
+          blurRadius: 10.0,
+          spreadRadius: 2.0,
+          offset: Offset(2.0, -10.0 )
+        )
+      ],
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(30.0),
+        child: card,
       ),
     );
   }

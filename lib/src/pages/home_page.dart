@@ -31,8 +31,8 @@ class HomePage extends StatelessWidget {
   }
 
   List<Widget>_listItems(List<dynamic> data, BuildContext context) {
-    final List<Widget> options = [];
 
+    final List<Widget> options = [];
     data.forEach( (option) {
       final widgetTemp = ListTile(
         leading: getIcon(option['icon']),
