@@ -7,7 +7,9 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
 
-  String _name = '';
+  String _name = 'Jhon Doe';
+  String _email = 'example@gmail.com';
+
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +21,8 @@ class _InputPageState extends State<InputPage> {
         padding: EdgeInsets.symmetric( horizontal: 10.0, vertical: 20.0 ),
         children: <Widget>[
           _createInput(),
+          Divider(),
+          _createEmail(),
           Divider(),
           _createPerson()
         ]
@@ -36,22 +40,38 @@ class _InputPageState extends State<InputPage> {
         ),
         counter: Text('Letras ${ _name.length }'),
         hintText: 'John Doe' ,
-        labelText: 'Escribe tu nombre aquí',
-        icon: Icon( Icons.account_circle),
-        helperText: 'Solo texto',
-        suffixIcon: Icon( Icons.accessibility_new )
+        labelText: 'Nombre',
+        helperText: 'Solo caracteres alfabeticos',
+        suffixIcon: Icon( Icons.account_circle )
       ),
-      onChanged: ( valor ) {
-        setState(() {
+      onChanged: ( valor ) => setState(() {
           _name = valor;
-        });
-      },
+        })
+    );
+  }
+
+  Widget _createEmail() {
+    return TextField(
+      keyboardType: TextInputType.emailAddress,
+      decoration: InputDecoration(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20.0)
+        ),
+        hintText: 'name@example.com' ,
+        labelText: 'Correo electrónico',
+        suffixIcon: Icon( Icons.mail )
+      ),
+      onChanged: ( valor ) => setState(() {
+          _email = valor;
+        })
     );
   }
 
   Widget _createPerson() {
     return ListTile(
-      title: Text('El nombre es $_name '),
+      title: Text('Nombre: $_name '),
+      subtitle: Text('Email: $_email '),
     );
   }
+
 }
