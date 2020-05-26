@@ -8,6 +8,7 @@ class SliderPage extends StatefulWidget {
 class _SliderPageState extends State<SliderPage> {
 
   double _valueSlide = 100.0;
+  bool   _blockCheck = false;
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +21,8 @@ class _SliderPageState extends State<SliderPage> {
         child: Column(
           children: <Widget>[
             _createSlide(),
+            Divider(),
+            _createCheckBox(),
             Divider(),
             Expanded(child: _createImage()),
           ]
@@ -35,7 +38,9 @@ class _SliderPageState extends State<SliderPage> {
       value: _valueSlide,
       min: 10.0,
       max: 400.0,
-      onChanged: ( val ){
+      onChanged: ( _blockCheck ) ?
+      null :
+      ( val ){
         setState(() {
           _valueSlide = val;
         });
@@ -50,6 +55,27 @@ class _SliderPageState extends State<SliderPage> {
       fadeInDuration: Duration( milliseconds: 200 ),
       width: _valueSlide,
       fit: BoxFit.contain,
+    );
+  }
+
+  Widget _createCheckBox() {
+    // return Checkbox(
+    //   value: _blockCheck,
+    //   onChanged: ( val ) {
+    //     setState(() {
+    //       _blockCheck = val;
+    //     });
+    //   }
+    // );
+
+    return CheckboxListTile(
+      value: _blockCheck,
+      title: Text('Habilitar Slide'),
+      onChanged: ( val ) {
+        setState(() {
+          _blockCheck = val;
+        });
+      }
     );
   }
 }
